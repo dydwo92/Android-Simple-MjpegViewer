@@ -75,18 +75,22 @@ There are only three methods to control the MjpegView component.
 mv.Start(String url);
 mv.Start(String url, Handler parent_handler);
 ```
+You can start the video streaming simply with **Start()** method. You can see there are two Start() methods above. If you want to handle events, insert the handle object in the Start() method. Handling events is described below(**[Event Handling](#event-handling)**).
 
-[Event Handling](#event-handling)
 ### 2. Stop
 ```java
 mv.Stop();
 ```
+You can stop the video streaming.
 
 ### 3. SetDisplayMode
 ```java
 mv.SetDisplayMode(mv.SIZE_FIT);
 mv.SetDisplayMode(mv.SIZE_FULL);
 ```
+When you set the display mode to *SIZE_FIT*, MjpegViewer will display the video to fit the screen properly. If you set the display mode to *SIZE_FULL*, MjpegViewer will crop the video appropriately and display it full on the screen.
+
+![](http://i.imgur.com/ZwqBjeP.jpg)
 
 # Event Handling
 ```java
