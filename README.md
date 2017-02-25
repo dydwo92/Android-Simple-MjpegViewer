@@ -66,3 +66,66 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 <img src="http://i.imgur.com/8FXyqLZ.jpg" width="300px" />
+
+# Methods
+There are only three methods to control the MjpegView component.
+
+### 1. Start
+```java
+mv.Start(String url);
+mv.Start(String url, Handler parent_handler);
+```
+
+[Event Handling](#event-handling)
+### 2. Stop
+```java
+mv.Stop();
+```
+
+### 3. SetDisplayMode
+```java
+mv.SetDisplayMode(mv.SIZE_FIT);
+mv.SetDisplayMode(mv.SIZE_FULL);
+```
+
+# Event Handling
+```java
+public class MainActivity extends AppCompatActivity {
+    MjpegView mv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mv = (MjpegView) findViewById(R.id.videwView);
+        mv.Start("http://webcam.st-malo.com/axis-cgi/mjpg/video.cgi?resolution=352x288", MjpegViewHandler);
+    }
+
+    final Handler MjpegViewHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            Log.d("State : ", msg.obj.toString());
+            
+            switch (msg.obj.toString()){
+                case "DISCONNECTED" :
+                    // TODO : When video stream disconnected
+                    break;
+                case "CONNECTION_PROGRESS" :
+                    // TODO : When connection progress
+                    break;
+                case "CONNECTED" :
+                    // TODO : When video streaming connected
+                    break;
+                case "CONNECTION_ERROR" :
+                    // TODO : When connection error
+                    break;
+                case "STOPPING_PROGRESS" :
+                    // TODO : When MjpegViewer is in stopping progress
+                    break;
+            }
+            
+        }
+    };
+
+}
+```
