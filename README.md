@@ -1,4 +1,5 @@
 # Android-Simple-MjpegViewer
+[![](https://jitpack.io/v/dydwo92/Android-Simple-MjpegViewer.svg)](https://jitpack.io/#dydwo92/Android-Simple-MjpegViewer)
 
 # Installation
 **Step1.** Add it in your root build.gradle at the end of repositories
@@ -37,3 +38,31 @@ Also, add the following tag. It will prevent video reloading when screen rotatin
     android:configChanges="orientation|screenSize"
 >
 ```
+
+# Usage
+**Add MjpegViewer component.** In the layout xml, put the MjpegView tag.
+```xml
+    <MjpegViewer.MjpegView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/videwView" />
+```
+
+**Start video streaming.** In the activity class, start the video streaming.
+```java
+public class MainActivity extends AppCompatActivity {
+    MjpegView mv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mv = (MjpegView) findViewById(R.id.videwView);
+        
+        // By the time you do this, the mjpeg stream url below may not work..
+        mv.Start("http://webcam.st-malo.com/axis-cgi/mjpg/video.cgi?resolution=352x288");
+    }
+}
+```
+<img src="http://i.imgur.com/8FXyqLZ.jpg" width="300px" />
