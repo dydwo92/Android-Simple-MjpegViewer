@@ -17,7 +17,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    com.github.dydwo92:Android-Simple-MjpegViewer:0.0'
+    compile 'com.github.dydwo92:Android-Simple-MjpegViewer:0.0'
 }
 ```
 
